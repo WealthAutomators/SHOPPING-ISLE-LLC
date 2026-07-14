@@ -26,26 +26,26 @@ export default function AboutPage() {
           </div>
           <PageSection title="Our Story">
             <p>
-              {company.name} was founded with a simple mission: bring innovation into everyday
-              living through a technology-forward marketplace. From premium electronics and smart
-              home tools to beauty, fashion, and lifestyle essentials — we select products that
-              balance performance, design, and lasting quality.
+              {company.name} was founded as a curated lifestyle destination inspired by coastal
+              living and resort calm. From refined home textiles and outdoor comfort to beauty,
+              fashion, and everyday essentials — we select products that bring ease, elegance, and
+              lasting quality into modern life.
             </p>
             <p className="mt-4">
-              Based in West Jordan, Utah, we partner with trusted suppliers to offer premium
-              products without compromise. Every piece in our catalog is chosen with intention, and
-              our team is dedicated to making your shopping experience fast, modern, and seamless
-              from browsing to checkout.
+              Based in Plantation, Florida, we partner with trusted makers to offer premium pieces
+              without compromise. Every item in our catalog is chosen with intention, and our team
+              is dedicated to making your shopping experience feel as measured and beautiful as the
+              spaces you create.
             </p>
           </PageSection>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { icon: ShoppingBag, title: "Wide Selection", desc: "13+ categories covering everything your home and family needs." },
-            { icon: Award, title: "Trusted Quality", desc: "Every product is carefully vetted for quality, value, and reliability." },
-            { icon: Heart, title: "Customer First", desc: "30-day returns, responsive support, and a satisfaction guarantee." },
-            { icon: Check, title: "Easy Shopping", desc: "One marketplace, one checkout — no jumping between multiple stores." },
+            { icon: ShoppingBag, title: "Curated Selection", desc: "Thoughtful categories spanning home, leisure, beauty, and everyday living." },
+            { icon: Award, title: "Trusted Quality", desc: "Every product is carefully vetted for design, comfort, and lasting value." },
+            { icon: Heart, title: "Guest First", desc: "30-day returns, responsive support, and a satisfaction guarantee." },
+            { icon: Check, title: "Effortless Shopping", desc: "One calm marketplace, one elegant checkout — browse without the noise." },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="rounded-lg border border-border bg-card p-6 text-center shadow-sm">
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">

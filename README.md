@@ -1,5 +1,5 @@
-# VETX INDUSTRIES LLC
+# SHOPPING ISLE LLC
 
-Next.js ecommerce storefront for **VETX INDUSTRIES LLC**.
+Next.js ecommerce storefront for **SHOPPING ISLE LLC**.
 
-VETX INDUSTRIES LLC — *Innovation For Everyday Living.* — is a modern technology lifestyle marketplace for electronics, home essentials, beauty, fashion, and more. Brand assets, colors, copy, and product data are data-driven, so the storefront can be re-themed without rewriting the ecommerce engine.
+SHOPPING ISLE LLC — *Curated Living. Inspired Shopping.* — is a luxury coastal lifestyle marketplace for home, beauty, fashion, outdoors, and everyday essentials. Brand assets, colors, copy, and product data are data-driven, so the storefront can be re-themed without rewriting the ecommerce engine.

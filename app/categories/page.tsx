@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 export const metadata = {
   title: "Shop by Category",
   description:
-    "Browse every department at VETX INDUSTRIES LLC — electronics, home & kitchen, beauty, toys, sports, pet supplies and more.",
+    "Browse every department at SHOPPING ISLE LLC — home & kitchen, beauty, fashion, outdoors, electronics, and more.",
 };
 
 export default function CategoriesPage() {

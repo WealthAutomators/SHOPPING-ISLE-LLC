@@ -196,7 +196,7 @@ export const privacyPolicy = {
       content:
         "You may request access to, correction of, or deletion of your personal data at any time by contacting us at " +
         company.email +
-        ". Utah residents have additional rights under applicable state privacy laws.",
+        ". Florida residents have additional rights under applicable state privacy laws.",
     },
     {
       title: "Contact",
@@ -234,7 +234,7 @@ export const termsPolicy = {
     {
       title: "Governing Law",
       content:
-        "These terms are governed by the laws of the State of Utah, United States. Any disputes shall be resolved in the courts of Salt Lake County, Utah.",
+        "These terms are governed by the laws of the State of Florida, United States. Any disputes shall be resolved in the courts of Broward County, Florida.",
     },
   ],
 };

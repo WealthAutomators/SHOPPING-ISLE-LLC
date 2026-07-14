@@ -7,20 +7,20 @@ import { Badge } from "@/components/ui/badge";
 
 export function CustomerReviews() {
   return (
-    <section className="bg-muted/50 py-24 md:py-32">
+    <section className="py-24 md:py-32">
       <Container>
         <SectionHeading
           title="Customer Reviews"
-          subtitle="Verified shoppers on the VETX experience — fast, modern, and reliable."
+          subtitle="Words from guests who shop with intention — verified purchases, thoughtful finds."
           centered
         />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {testimonials.map((t) => (
             <div
               key={t.id}
-              className="glass-panel rounded-3xl p-6 transition-shadow hover:shadow-lg hover:shadow-primary/5"
+              className="flex h-full flex-col border border-border bg-card p-7 transition-shadow hover:shadow-[0_8px_30px_rgba(36,50,61,0.06)]"
             >
-              <div className="mb-4 flex items-center gap-3">
+              <div className="mb-5 flex items-center gap-3">
                 <Image
                   src={`/reviews/review-${((Number(t.id) - 1) % 8) + 1}.jpg`}
                   alt={t.name}
@@ -29,17 +29,19 @@ export function CustomerReviews() {
                   className="h-11 w-11 rounded-full object-cover"
                 />
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-medium tracking-wide">{t.name}</p>
+                  <p className="truncate font-display text-lg font-medium tracking-wide">{t.name}</p>
                   <p className="text-xs text-muted-foreground">{t.location}</p>
                 </div>
               </div>
-              <div className="mb-3 flex items-center gap-2">
+              <div className="mb-4 flex items-center gap-2">
                 <StarRating rating={t.rating} showCount={false} size="sm" />
-                <Badge variant="outline" className="border-secondary/30 text-[10px] text-secondary">
+                <Badge variant="outline" className="border-secondary/50 text-[10px] text-foreground">
                   Verified Purchase
                 </Badge>
               </div>
-              <p className="text-[15px] leading-relaxed text-muted-foreground">{t.text}</p>
+              <p className="flex-1 font-display text-lg leading-relaxed text-foreground/80">
+                &ldquo;{t.text}&rdquo;
+              </p>
             </div>
           ))}
         </div>

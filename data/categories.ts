@@ -11,7 +11,7 @@ export const categories: Category[] = [
     slug: "electronics",
     name: "Electronics",
     image: "/categories/electronics.jpg",
-    description: "Smart gadgets, audio gear, and everyday tech essentials.",
+    description: "Refined audio and everyday tech for a quieter, smarter home.",
     productCount: countFor("electronics"),
   },
   {
@@ -19,7 +19,7 @@ export const categories: Category[] = [
     slug: "home-kitchen",
     name: "Home & Kitchen",
     image: "/categories/home-kitchen.jpg",
-    description: "Appliances and tools to make home life easier.",
+    description: "Beautiful tools and textiles for calm, intentional interiors.",
     productCount: countFor("home-kitchen"),
   },
   {
@@ -27,7 +27,7 @@ export const categories: Category[] = [
     slug: "bathroom",
     name: "Bathroom",
     image: "/categories/bathroom.jpg",
-    description: "Towels, mats, and bathroom essentials.",
+    description: "Spa-soft towels, mats, and rituals for restorative mornings.",
     productCount: countFor("bathroom"),
   },
   {
@@ -35,7 +35,7 @@ export const categories: Category[] = [
     slug: "educational-toys",
     name: "Educational Toys",
     image: "/categories/educational-toys.jpg",
-    description: "Learning tools that make education fun.",
+    description: "Thoughtful play that sparks curiosity and creative discovery.",
     productCount: countFor("educational-toys"),
   },
   {
@@ -43,7 +43,7 @@ export const categories: Category[] = [
     slug: "pet-supplies",
     name: "Pet Supplies",
     image: "/categories/pet-supplies.jpg",
-    description: "Comfort and care products for your pets.",
+    description: "Comfort-first pieces for the companions who share your home.",
     productCount: countFor("pet-supplies"),
   },
   {
@@ -51,7 +51,7 @@ export const categories: Category[] = [
     slug: "beauty",
     name: "Beauty",
     image: "/categories/beauty.jpg",
-    description: "Skincare, hair care, and personal care favorites.",
+    description: "Quiet self-care essentials with a resort-spa sensibility.",
     productCount: countFor("beauty"),
   },
   {
@@ -59,7 +59,7 @@ export const categories: Category[] = [
     slug: "sports-outdoors",
     name: "Sports",
     image: "/categories/sports-outdoors.jpg",
-    description: "Gear for fitness, yoga, and outdoor activities.",
+    description: "Outdoor comfort and movement for terraces, gardens, and travel.",
     productCount: countFor("sports-outdoors"),
   },
   {
@@ -67,7 +67,7 @@ export const categories: Category[] = [
     slug: "office-supplies",
     name: "Office",
     image: "/categories/office-supplies.jpg",
-    description: "Desk accessories and workspace essentials.",
+    description: "Warm, composed desk pieces for focused daily work.",
     productCount: countFor("office-supplies"),
   },
   {
@@ -75,7 +75,7 @@ export const categories: Category[] = [
     slug: "fashion-accessories",
     name: "Fashion",
     image: "/categories/fashion-accessories.jpg",
-    description: "Accessories to complete your everyday look.",
+    description: "Light layers and finishing details for coastal everyday style.",
     productCount: countFor("fashion-accessories"),
   },
   {
@@ -83,7 +83,7 @@ export const categories: Category[] = [
     slug: "baby-products",
     name: "Baby",
     image: "/categories/baby-products.jpg",
-    description: "Safe, thoughtful products for little ones.",
+    description: "Gentle essentials chosen with care for little ones.",
     productCount: countFor("baby-products"),
   },
   {
@@ -91,7 +91,7 @@ export const categories: Category[] = [
     slug: "toys-games",
     name: "Toys & Games",
     image: "/categories/toys-games.jpg",
-    description: "Fun for kids and families of all ages.",
+    description: "Playful pieces for family evenings and imaginative days.",
     productCount: countFor("toys-games"),
   },
   {
@@ -99,7 +99,7 @@ export const categories: Category[] = [
     slug: "health-wellness",
     name: "Health & Wellness",
     image: "/categories/health-wellness.jpg",
-    description: "Products to support your wellness routine.",
+    description: "Supportive tools for recovery, balance, and daily wellbeing.",
     productCount: countFor("health-wellness"),
   },
   {
@@ -107,7 +107,7 @@ export const categories: Category[] = [
     slug: "gaming",
     name: "Gaming",
     image: "/categories/gaming.jpg",
-    description: "Headsets, peripherals, and accessories for every gamer.",
+    description: "Comfort-forward gear for immersive evenings at home.",
     productCount: countFor("gaming"),
   },
 ];

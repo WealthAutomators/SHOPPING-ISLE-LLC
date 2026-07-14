@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #111827;
-  --primary: #0f172a;
+  --background: #fbfaf7;
+  --foreground: #24323d;
+  --primary: #0f4c5c;
   --primary-foreground: #ffffff;
-  --secondary: #2563eb;
-  --secondary-foreground: #ffffff;
-  --accent: #22d3ee;
-  --accent-foreground: #0f172a;
-  --highlight: #38bdf8;
-  --teal: #22d3ee;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --border: #e5e7eb;
-  --ring: #2563eb;
+  --secondary: #d4b483;
+  --secondary-foreground: #24323d;
+  --accent: #7ac7c4;
+  --accent-foreground: #24323d;
+  --highlight: #7ac7c4;
+  --teal: #7ac7c4;
+  --muted: #f5f2ec;
+  --muted-foreground: #667085;
+  --border: #ece8e1;
+  --ring: #0f4c5c;
   --card: #ffffff;
-  --radius: 12px;
+  --radius: 4px;
 }
 
 @theme inline {
@@ -35,18 +35,18 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
   --color-card: var(--card);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-space-grotesk);
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-cormorant);
+  --radius-lg: 4px;
+  --radius-xl: 8px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
   font-size: 16px;
-  letter-spacing: -0.011em;
+  letter-spacing: 0.01em;
 }
 
 h1,
@@ -54,7 +54,9 @@ h2,
 h3,
 h4,
 .font-display {
-  font-family: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 @keyframes accordion-down {
@@ -88,15 +90,15 @@ body {
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(229, 231, 235, 0.7);
+  border: 1px solid rgba(236, 232, 225, 0.9);
 }
 
 .glass-panel-strong {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(229, 231, 235, 0.9);
+  border: 1px solid rgba(236, 232, 225, 1);
 }

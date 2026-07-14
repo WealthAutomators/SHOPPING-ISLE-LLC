@@ -1,50 +1,30 @@
 "use client";
 
-import { useState } from "react";
-import { bestSellerTabs, homepageBestsellerSlugs } from "@/data/homepage";
-import { getBestsellerProducts, getProductsBySlugs } from "@/data/products";
+import { homepageBestsellerSlugs } from "@/data/homepage";
+import { getProductsBySlugs } from "@/data/products";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Carousel } from "@/components/ui/carousel";
 import { ProductCard } from "@/components/product/product-card";
-import { cn } from "@/lib/utils";
 
 export function BestSellers() {
-  const [activeTab, setActiveTab] = useState("all");
-  const curatedBestsellers = getProductsBySlugs(homepageBestsellerSlugs);
-  const bestsellers = getBestsellerProducts();
-
-  const filtered =
-    activeTab === "all"
-      ? curatedBestsellers
-      : bestsellers.filter((p) => p.categorySlug === activeTab).slice(0, 4);
+  const bestsellers = getProductsBySlugs(homepageBestsellerSlugs);
 
   return (
     <section className="py-24 md:py-32">
       <Container>
-        <SectionHeading title="Best Sellers" viewMoreLink="/best-sellers" />
-
-        <div className="mb-10 flex flex-wrap gap-2">
-          {bestSellerTabs.map((tab) => (
-            <button
-              key={tab.slug}
-              onClick={() => setActiveTab(tab.slug)}
-              className={cn(
-                "rounded-xl px-5 py-2 text-sm font-medium transition-colors",
-                activeTab === tab.slug
-                  ? "bg-primary text-white"
-                  : "bg-muted text-muted-foreground hover:bg-secondary hover:text-white"
-              )}
-            >
-              {tab.label}
-            </button>
+        <SectionHeading
+          title="Best Sellers"
+          subtitle="Quiet favorites our community returns to season after season."
+          viewMoreLink="/best-sellers"
+        />
+        <Carousel slidesToShow={4} className="mt-4 px-4 sm:px-8">
+          {bestsellers.map((product) => (
+            <div key={product.id} className="px-2 sm:px-3">
+              <ProductCard product={product} />
+            </div>
           ))}
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-          {filtered.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        </Carousel>
       </Container>
     </section>
   );

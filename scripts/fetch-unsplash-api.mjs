@@ -1,15 +1,14 @@
 /**
  * Fetches relevant product/category imagery from the Unsplash API for
- * VETX INDUSTRIES LLC and saves them into /public.
- *
- * Only Unsplash API *search* calls count against the hourly rate limit
- * (50/hr on a demo key). Downloading the resulting image bytes from the
- * images.unsplash.com CDN does NOT count, so we do exactly one search per
- * product/category and pull the images we need from each response.
+ * SHOPPING ISLE LLC and saves them into /public.
  *
  * Usage:
  *   UNSPLASH_ACCESS_KEY=xxxx node scripts/fetch-unsplash-api.mjs
  *   node scripts/fetch-unsplash-api.mjs <access_key>
+ *
+ * Optionally limit work:
+ *   ONLY_SLUGS=slug1,slug2 UNSPLASH_ACCESS_KEY=xxxx node scripts/fetch-unsplash-api.mjs
+ *   FETCH_HOMEPAGE=1 UNSPLASH_ACCESS_KEY=xxxx node scripts/fetch-unsplash-api.mjs
  */
 import fs from "fs";
 import path from "path";
@@ -26,59 +25,56 @@ if (!ACCESS_KEY) {
   process.exit(1);
 }
 
-/** Hard cap so we never blow past the hourly API budget. */
 const MAX_API_CALLS = 48;
 let apiCalls = 0;
 
-/** Search query per product slug (visual relevance). */
 const PRODUCT_QUERIES = {
   "wireless-earbuds": "wireless earbuds",
   "bluetooth-speaker": "portable bluetooth speaker",
-  "magnetic-wireless-charger": "magsafe wireless charger phone",
-  "portable-ssd-drive": "portable ssd hard drive",
+  "coastal-throw-blanket": "linen throw blanket sofa",
+  "marble-serving-board": "marble cheese board",
   "electric-kettle": "electric glass kettle",
   "air-fryer": "air fryer kitchen",
   "coffee-grinder": "coffee grinder",
-  "cold-brew-maker": "cold brew coffee maker glass",
-  "bath-towel-set": "folded bath towels",
+  "linen-duvet-cover": "linen bedding duvet white",
+  "bath-towel-set": "folded bath towels spa",
   "bamboo-bath-mat": "bamboo bath mat bathroom",
-  "kids-learning-tablet": "child using tablet",
-  "led-light-strip-kit": "led light strip rgb desk",
+  "spa-robe-set": "white waffle spa robe",
+  "ceramic-diffuser": "ceramic essential oil diffuser",
   "dog-bed": "dog bed",
-  "smart-pet-feeder": "automatic pet feeder",
-  "vitamin-c-serum-set": "skincare serum bottle",
-  "portable-blender": "portable personal blender",
+  "woven-storage-baskets": "seagrass woven basket storage",
+  "vitamin-c-serum-set": "skincare serum bottle beauty",
+  "outdoor-lantern-set": "outdoor metal lantern patio",
   "yoga-mat": "yoga mat",
   "resistance-bands-set": "resistance bands workout",
-  "fitness-tracker-band": "fitness tracker smartwatch band",
-  "standing-desk-lamp": "desk lamp",
-  "aluminum-laptop-stand": "aluminum laptop stand desk",
+  "outdoor-lounge-cushion": "outdoor patio cushion lounge",
+  "standing-desk-lamp": "minimal desk lamp",
+  "teak-desk-organizer": "wooden desk organizer tray",
   "leather-wallet": "leather wallet",
   "sunglasses-classic": "sunglasses",
-  "ultra-thin-power-bank": "slim power bank portable charger",
+  "cashmere-scarf": "cashmere scarf fashion",
   "baby-monitor": "baby monitor camera",
   "magnetic-tile-builders": "magnetic building tiles kids",
   "foam-roller": "foam roller fitness",
-  "robot-vacuum-mini": "robot vacuum cleaner",
+  "brass-picture-frame": "brass picture frame decor",
   "gaming-headset": "gaming headset",
-  "rgb-gaming-keyboard": "mechanical rgb keyboard",
+  "silk-pillowcase-set": "silk pillowcase luxury bedding",
 };
 
-/** Search query per category slug. */
 const CATEGORY_QUERIES = {
-  electronics: "consumer electronics gadgets",
-  "home-kitchen": "modern kitchen appliances",
-  bathroom: "bathroom interior clean",
+  electronics: "minimal electronics lifestyle",
+  "home-kitchen": "beautiful modern kitchen interior coastal",
+  bathroom: "luxury spa bathroom interior",
   "educational-toys": "educational toys children",
   "pet-supplies": "pet supplies accessories",
-  beauty: "beauty cosmetics flat lay",
-  "sports-outdoors": "fitness sports equipment",
-  "office-supplies": "office desk supplies",
-  "fashion-accessories": "fashion accessories flat lay",
-  "baby-products": "baby products nursery",
+  beauty: "beauty skincare flat lay aesthetic",
+  "sports-outdoors": "outdoor patio lifestyle",
+  "office-supplies": "calm organized desk workspace",
+  "fashion-accessories": "fashion accessories flat lay linen",
+  "baby-products": "baby nursery soft",
   "toys-games": "toys and games",
-  "health-wellness": "health wellness products",
-  gaming: "gaming setup rgb",
+  "health-wellness": "wellness spa products",
+  gaming: "gaming setup clean desk",
 };
 
 function parseProducts() {
@@ -117,7 +113,7 @@ async function searchPhotos(query, { orientation = "squarish", perPage = 8 } = {
 }
 
 async function downloadImage(photo, width) {
-  const url = `${photo.urls.raw}&fm=jpg&q=85&w=${width}&fit=crop`;
+  const url = `${photo.urls.raw}&fm=jpg&q=82&w=${width}&fit=crop`;
   const res = await fetch(url, { redirect: "follow" });
   if (!res.ok) throw new Error(`CDN HTTP ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
@@ -144,17 +140,9 @@ async function saveTarget(file, photo, width) {
   return true;
 }
 
-async function main() {
-  const onlySlugs = process.env.ONLY_SLUGS
-    ? new Set(process.env.ONLY_SLUGS.split(",").map((s) => s.trim()))
-    : null;
-  const products = parseProducts().filter((p) => !onlySlugs || onlySlugs.has(p.slug));
+async function fetchProductImages(products) {
   let success = 0;
   let failed = 0;
-
-  console.log(`Unsplash API image fetch — budget ${MAX_API_CALLS} searches\n`);
-
-  // 1) Products (highest priority): 1 search each, take 2 unique photos.
   for (const product of products) {
     const query = PRODUCT_QUERIES[product.slug] || product.slug.replace(/-/g, " ");
     try {
@@ -185,49 +173,24 @@ async function main() {
       }
     } catch (err) {
       console.error(`✗ product ${product.slug}: ${err.message}`);
-      if (err.message.includes("budget")) return finish(success, failed);
+      if (err.message.includes("budget")) return { success, failed, stop: true };
       failed += 2;
     }
   }
+  return { success, failed, stop: false };
+}
 
-  if (onlySlugs) return finish(success, failed);
-
-  // 2) Categories: 1 search each, 1 landscape photo.
-  for (const [slug, query] of Object.entries(CATEGORY_QUERIES)) {
-    try {
-      const { results, remaining } = await searchPhotos(query, {
-        orientation: "landscape",
-        perPage: 6,
-      });
-      const candidates = pickUnused(results);
-      let saved = false;
-      let i = 0;
-      while (i < candidates.length && !saved) {
-        try {
-          saved = await saveTarget(`categories/${slug}.jpg`, candidates[i], 900);
-        } catch (err) {
-          console.warn(`  retry categories/${slug}: ${err.message}`);
-        }
-        i++;
-      }
-      if (saved) {
-        success++;
-        console.log(`✓ categories/${slug}.jpg ← "${query}" (api left: ${remaining})`);
-      } else {
-        failed++;
-      }
-    } catch (err) {
-      console.error(`✗ category ${slug}: ${err.message}`);
-      if (err.message.includes("budget")) return finish(success, failed);
-      failed++;
-    }
-  }
-
-  // 3) Hero + banners (landscape) if budget remains.
+async function fetchHomepageImages() {
+  let success = 0;
+  let failed = 0;
   const wide = [
-    { file: "hero/hero-1.jpg", query: "modern tech lifestyle shopping device", width: 1800 },
-    { file: "banners/featured.jpg", query: "futuristic technology workspace blue", width: 1600 },
-    { file: "banners/about.jpg", query: "modern warehouse logistics packaging", width: 1600 },
+    { file: "hero/hero-1.jpg", query: "luxury coastal living room soft light", width: 2000 },
+    { file: "banners/featured.jpg", query: "elegant coastal interior lifestyle", width: 1600 },
+    { file: "banners/about.jpg", query: "resort lifestyle coastal terrace", width: 1600 },
+    { file: "categories/fashion-accessories.jpg", query: "summer fashion accessories linen", width: 1200 },
+    { file: "categories/home-kitchen.jpg", query: "bright modern coastal kitchen", width: 1200 },
+    { file: "categories/sports-outdoors.jpg", query: "outdoor patio lounge cushion", width: 1200 },
+    { file: "categories/beauty.jpg", query: "spa beauty products flat lay", width: 1200 },
   ];
   for (const t of wide) {
     try {
@@ -254,9 +217,40 @@ async function main() {
       }
     } catch (err) {
       console.error(`✗ ${t.file}: ${err.message}`);
-      if (err.message.includes("budget")) return finish(success, failed);
+      if (err.message.includes("budget")) break;
       failed++;
     }
+  }
+  return { success, failed };
+}
+
+async function main() {
+  const onlySlugs = process.env.ONLY_SLUGS
+    ? new Set(process.env.ONLY_SLUGS.split(",").map((s) => s.trim()))
+    : null;
+  const fetchHomepage = process.env.FETCH_HOMEPAGE === "1" || !onlySlugs;
+
+  const products = parseProducts().filter((p) => !onlySlugs || onlySlugs.has(p.slug));
+  let success = 0;
+  let failed = 0;
+
+  console.log(`Unsplash API image fetch — budget ${MAX_API_CALLS} searches\n`);
+
+  if (products.length) {
+    const result = await fetchProductImages(products);
+    success += result.success;
+    failed += result.failed;
+    if (result.stop) return finish(success, failed);
+  }
+
+  if (fetchHomepage && !onlySlugs) {
+    const result = await fetchHomepageImages();
+    success += result.success;
+    failed += result.failed;
+  } else if (process.env.FETCH_HOMEPAGE === "1") {
+    const result = await fetchHomepageImages();
+    success += result.success;
+    failed += result.failed;
   }
 
   finish(success, failed);

@@ -12,23 +12,22 @@ export function FeaturedCollections() {
     <section className="py-24 md:py-32">
       <Container>
         <SectionHeading
-          title="Featured Collections"
-          subtitle="Premium edits for smarter living, home comfort, focused work, and everyday favorites."
+          title="Seasonal Collections"
+          subtitle="Four curated worlds for summer ease, modern interiors, outdoor comfort, and everyday rituals."
           centered
         />
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:gap-6">
           {featuredCollections.map((collection, index) => (
             <motion.div
               key={collection.id}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: index * 0.1 }}
-              className={index % 2 === 1 ? "md:mt-14" : ""}
+              transition={{ duration: 0.55, delay: index * 0.08 }}
             >
               <Link
                 href={collection.href}
-                className="group relative block aspect-[16/11] overflow-hidden rounded-3xl bg-muted"
+                className="group relative block aspect-[4/5] overflow-hidden bg-muted sm:aspect-[5/6]"
               >
                 <Image
                   src={collection.image}
@@ -37,17 +36,14 @@ export function FeaturedCollections() {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                  <h3 className="font-display text-2xl font-semibold tracking-tight text-white md:text-3xl">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F4C5C]/75 via-[#0F4C5C]/15 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-7 md:p-9">
+                  <h3 className="font-display text-3xl font-medium tracking-tight text-white md:text-4xl">
                     {collection.title}
                   </h3>
                   <p className="mt-2 max-w-sm text-sm text-white/80 md:text-base">
                     {collection.subtitle}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-accent transition-transform group-hover:translate-x-1">
-                    Explore →
-                  </span>
                 </div>
               </Link>
             </motion.div>

@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/navbar/site-header";
 import { Footer } from "@/components/footer/footer";
 import { Providers } from "@/components/providers/Providers";
 import { company } from "@/data/company";
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const siteUrl = "https://vetxindustriesllc.com";
+const siteUrl = "https://shoppingislellc.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -69,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}>
+    <html lang="en" className={`${dmSans.variable} ${cormorant.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background text-[16px] md:text-[17px]">
         <script
           type="application/ld+json"

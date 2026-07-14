@@ -1,15 +1,14 @@
 import { NavLink } from "@/types";
 
 export const leftNavLinks: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "/shop" },
+  { label: "Shop", href: "/shop" },
   { label: "Collections", href: "/categories" },
-  { label: "Technology", href: "/categories/electronics" },
+  { label: "New Arrivals", href: "/new-arrivals" },
 ];
 
 export const rightNavLinks: NavLink[] = [
-  { label: "Deals", href: "/shop?sort=sale" },
-  { label: "Support", href: "/faq" },
+  { label: "About", href: "/about" },
+  { label: "Journal", href: "/journal" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -26,11 +25,12 @@ export const footerLinks = {
     { label: "Collections", href: "/categories" },
     { label: "New Arrivals", href: "/new-arrivals" },
     { label: "Best Sellers", href: "/best-sellers" },
-    { label: "Electronics", href: "/categories/electronics" },
     { label: "Home & Kitchen", href: "/categories/home-kitchen" },
+    { label: "Beauty", href: "/categories/beauty" },
   ],
   company: [
     { label: "About Us", href: "/about" },
+    { label: "Journal", href: "/journal" },
     { label: "Contact", href: "/contact" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms & Conditions", href: "/terms" },

@@ -8,13 +8,13 @@ export const heroSlides: HeroSlide[] = [
   {
     id: "1",
     image: "/hero/hero-1.jpg",
-    headline: "The Future Of Everyday Shopping.",
+    headline: "Shop Beautifully.\nLive Comfortably.",
     description:
-      "Premium electronics, home essentials, lifestyle products and everyday favorites curated into one seamless shopping experience.",
-    ctaText: "Explore Products",
+      "Explore thoughtfully selected products for every room, every routine and every season.",
+    ctaText: "Explore Collection",
     ctaLink: "/shop",
-    secondaryCtaText: "Latest Deals",
-    secondaryCtaLink: "/shop?sort=sale",
+    secondaryCtaText: "Shop New Arrivals",
+    secondaryCtaLink: "/new-arrivals",
   },
 ];
 
@@ -22,14 +22,14 @@ export const features: Feature[] = [
   {
     id: "1",
     icon: "truck",
-    title: "Fast Delivery",
-    description: "Free shipping on orders over $75. Most orders arrive in 3–5 business days.",
+    title: "Complimentary Shipping",
+    description: "Free shipping on orders over $75. Most arrive in 3–5 business days.",
   },
   {
     id: "2",
     icon: "star",
-    title: "Premium Products",
-    description: "Every product is carefully selected for design, performance, and lasting value.",
+    title: "Curated Selection",
+    description: "Every product is chosen for design, comfort, and lasting quality.",
   },
   {
     id: "3",
@@ -48,104 +48,104 @@ export const features: Feature[] = [
 export const featuredCollections = [
   {
     id: "1",
-    title: "Smart Living",
-    subtitle: "Connected tech that simplifies your routine",
-    href: "/categories/electronics",
-    image: "/categories/electronics.jpg",
+    title: "Summer Living",
+    subtitle: "Light fabrics, breezy textures, and sunlit essentials",
+    href: "/categories/fashion-accessories",
+    image: "/categories/fashion-accessories.jpg",
   },
   {
     id: "2",
-    title: "Home Essentials",
-    subtitle: "Refined tools for modern spaces",
+    title: "Modern Home",
+    subtitle: "Refined pieces for calm, intentional interiors",
     href: "/categories/home-kitchen",
     image: "/categories/home-kitchen.jpg",
   },
   {
     id: "3",
-    title: "Work & Office",
-    subtitle: "Gear that keeps your workspace sharp",
-    href: "/categories/office-supplies",
-    image: "/categories/office-supplies.jpg",
+    title: "Outdoor Comfort",
+    subtitle: "Lounge-ready finds for terraces and gardens",
+    href: "/categories/sports-outdoors",
+    image: "/categories/sports-outdoors.jpg",
   },
   {
     id: "4",
-    title: "Everyday Favorites",
-    subtitle: "Lifestyle picks for daily rituals",
-    href: "/categories/fashion-accessories",
-    image: "/categories/fashion-accessories.jpg",
+    title: "Everyday Essentials",
+    subtitle: "Beautiful tools for the rituals you return to daily",
+    href: "/categories/beauty",
+    image: "/categories/beauty.jpg",
   },
 ];
 
 export const editorialBanner = {
-  title: "Shopping Powered By Innovation.",
+  title: "Inspired Spaces.\nThoughtful Living.",
   description:
-    "Discover products carefully selected to simplify work, home and everyday life.",
-  ctaText: "Browse Collection",
-  ctaLink: "/categories",
+    "SHOPPING ISLE LLC is a curated lifestyle destination — where coastal calm meets modern comfort. Discover products chosen to elevate every corner of your home and every moment of your day.",
+  ctaText: "Discover More",
+  ctaLink: "/about",
   image: "/banners/featured.jpg",
 };
 
 export const dealsEndTime = new Date(Date.now() + 1000 * 60 * 60 * 18).toISOString();
 
 export const homepageDealsSlugs = [
-  "magnetic-wireless-charger",
-  "portable-ssd-drive",
-  "air-fryer",
-  "fitness-tracker-band",
+  "linen-duvet-cover",
+  "bath-towel-set",
+  "outdoor-lantern-set",
+  "cashmere-scarf",
   "gaming-headset",
-  "ultra-thin-power-bank",
+  "spa-robe-set",
 ] as const;
 
 export const homepageTrendingSlugs = [
-  "magnetic-wireless-charger",
-  "led-light-strip-kit",
-  "aluminum-laptop-stand",
-  "robot-vacuum-mini",
-  "portable-blender",
+  "linen-duvet-cover",
+  "ceramic-diffuser",
+  "teak-desk-organizer",
+  "outdoor-lounge-cushion",
+  "woven-storage-baskets",
   "yoga-mat",
   "bluetooth-speaker",
-  "cold-brew-maker",
+  "marble-serving-board",
 ] as const;
 
 export const homepageBestsellerSlugs = [
   "wireless-earbuds",
-  "robot-vacuum-mini",
+  "linen-duvet-cover",
   "electric-kettle",
-  "fitness-tracker-band",
-  "gaming-headset",
   "bath-towel-set",
-  "aluminum-laptop-stand",
+  "outdoor-lantern-set",
   "dog-bed",
+  "yoga-mat",
+  "ceramic-diffuser",
 ] as const;
 
 export const homepageFeaturedSlugs = [
-  "magnetic-wireless-charger",
-  "robot-vacuum-mini",
-  "portable-ssd-drive",
-  "aluminum-laptop-stand",
-  "led-light-strip-kit",
-  "fitness-tracker-band",
-  "cold-brew-maker",
-  "wireless-earbuds",
-  "ultra-thin-power-bank",
-  "yoga-mat",
+  "linen-duvet-cover",
+  "marble-serving-board",
+  "outdoor-lounge-cushion",
+  "teak-desk-organizer",
+  "coastal-throw-blanket",
+  "spa-robe-set",
+  "cashmere-scarf",
+  "ceramic-diffuser",
+  "woven-storage-baskets",
+  "outdoor-lantern-set",
 ] as const;
 
 export const homepageNewArrivalSlugs = [
-  "magnetic-wireless-charger",
-  "portable-ssd-drive",
-  "robot-vacuum-mini",
-  "fitness-tracker-band",
-  "led-light-strip-kit",
-  "cold-brew-maker",
+  "linen-duvet-cover",
+  "marble-serving-board",
+  "ceramic-diffuser",
+  "outdoor-lantern-set",
+  "cashmere-scarf",
+  "brass-picture-frame",
 ] as const;
 
 export const promotionalBanner: PromoBanner = {
   id: "1",
-  title: "Innovation Without Friction",
+  title: "Curated Living. Inspired Shopping.",
   description:
-    "Premium materials. Thoughtful design. Products chosen to streamline everyday living.",
-  buttonText: "Browse Products",
+    "Premium materials. Quiet design. Products chosen to bring resort calm into everyday life.",
+  buttonText: "Browse Collection",
   buttonLink: "/shop",
   image: "/banners/featured.jpg",
 };
@@ -153,25 +153,25 @@ export const promotionalBanner: PromoBanner = {
 export const featuredCollection = {
   title: "Featured Products",
   description:
-    "Hand-selected pieces across electronics, home, beauty, and more — curated for modern living.",
+    "Hand-selected pieces across home, beauty, fashion, and more — curated for coastal lifestyle living.",
   bannerImage: "/banners/featured.jpg",
-  categorySlug: "electronics",
+  categorySlug: "home-kitchen",
 };
 
 export const bestSellerTabs = [
   { label: "All", slug: "all" },
-  { label: "Electronics", slug: "electronics" },
   { label: "Home & Kitchen", slug: "home-kitchen" },
   { label: "Beauty", slug: "beauty" },
+  { label: "Fashion", slug: "fashion-accessories" },
   { label: "Sports", slug: "sports-outdoors" },
 ];
 
 export const newsletter = {
-  title: "Stay Ahead.",
+  title: "Join Our Community.",
   description:
-    "Receive exclusive launches, seasonal deals and new arrivals before everyone else.",
+    "Receive seasonal collections, exclusive offers and carefully curated recommendations.",
   placeholder: "Enter your email address",
-  buttonText: "Join Now",
+  buttonText: "Subscribe",
 };
 
 export const sortOptions = [
@@ -183,16 +183,16 @@ export const sortOptions = [
 ];
 
 export const aboutSection = {
-  title: "Built For Modern Life.",
+  title: "Inspired Spaces.\nThoughtful Living.",
   description:
-    "VETX INDUSTRIES LLC exists for people who want technology and everyday essentials to work together. We curate electronics, home tools, beauty, fashion, and lifestyle pieces that balance performance with simplicity.",
+    "SHOPPING ISLE LLC is more than a marketplace — it is a curated lifestyle destination. We gather products that bring the ease of resort living into your everyday spaces: soft textiles, refined tools, and beautiful essentials for home, self-care, and leisure.",
   checklist: [
-    "Technology-forward across every category",
+    "Coastal-inspired curation across every category",
     "Quality-first selection over endless inventory",
-    "Products designed for speed, clarity, and comfort",
-    "A shopping experience built around innovation",
+    "Products designed for comfort, clarity, and beauty",
+    "A shopping experience that feels like turning magazine pages",
   ],
-  buttonText: "Shop Now",
-  buttonLink: "/shop",
+  buttonText: "Discover More",
+  buttonLink: "/about",
   image: "/banners/about.jpg",
 };

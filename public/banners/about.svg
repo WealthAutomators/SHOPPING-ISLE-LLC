@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
-  <rect width="1600" height="900" fill="#0F172A"/>
-  <circle cx="400" cy="300" r="260" fill="#2563EB" fill-opacity="0.3"/>
-  <circle cx="1200" cy="600" r="280" fill="#38BDF8" fill-opacity="0.2"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="36" font-weight="600" letter-spacing="3">VETX INDUSTRIES LLC</text>
+  <rect width="1600" height="900" fill="#0F4C5C"/>
+  <circle cx="400" cy="300" r="260" fill="#D4B483" fill-opacity="0.25"/>
+  <circle cx="1200" cy="600" r="280" fill="#7AC7C4" fill-opacity="0.2"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#FFFFFF" font-family="Georgia, serif" font-size="36" font-weight="500" letter-spacing="3">SHOPPING ISLE LLC</text>
 </svg>
